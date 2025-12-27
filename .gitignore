@@ -1,0 +1,13 @@
+## Ignore Files for Git to keep Git cleaner
+
+__pycache__/
+*.pyc
+
+# Virtual env
+.venv/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
