@@ -3,8 +3,11 @@
 ## Dec 26, 2025 Next steps
 
 Next immediate
-- Try turtle clicking function
-- Confirm it's seeing coordinates by printing them
+- game state management setup
+    - Tracking where marks have been placed
+    - 
+
+
 
 Overall tasks 
 - click handling inputs
@@ -26,3 +29,11 @@ Overall tasks
 - Project wrap-up
     - See if there's a way to translate the game into a self container executable
     - Code clean-up commenting
+
+Function break down
+    draw board
+    Handle clicks - return the position of the click within the row / column of the grid
+    Draw XO_input - use row/col as input
+        Add error handling later
+    
+        
