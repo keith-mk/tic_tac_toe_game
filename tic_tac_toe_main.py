@@ -1,8 +1,71 @@
 import turtle
 
-size = 300 #size of the board
-cell = size //3 # size of each cell = 100
-half = size //2 
+
+
+
+
+
+# Text UI interactions
+text_turtle = turtle.Turtle()
+text_turtle.hideturtle()
+text_turtle.penup()
+
+def show_message(msg):
+    text_turtle.clear() #remove previoux tesst drawn by text turtle
+    text_turtle.goto(0, SIZE //2 + CELL)
+    text_turtle.write(msg, align="center", font= ("Arial", 16, "bold"))
+
+
+# Board Management sections
+
+
+#definitions - Hard coded values
+SIZE = 300 #SIZE of the board
+CELL = SIZE //3 # SIZE of each CELL = 100
+HALF = SIZE //2 
+EMPTY = 0
+X = 1
+O = 2
+
+
+def create_board():
+    return [
+        [EMPTY, EMPTY, EMPTY],
+        [EMPTY, EMPTY, EMPTY],
+        [EMPTY, EMPTY, EMPTY],
+    ]
+
+#globals with initialization
+board = create_board()
+
+# function draws an o at the input row and column center
+def draw_o(row,col):
+    radius = CELL //2
+    cx, cy = cell_center(row, col)
+    turtle.penup()
+    turtle.goto(cx, cy - radius)
+    turtle.pendown()
+    turtle.circle(radius)
+
+# function draws an o at the input row and column center
+def draw_x(row,col):
+    cx, cy = cell_center(row, col)
+    turtle.penup()
+    turtle.goto(cx - CELL /2, cy + CELL //2) # go to top left of cell
+    turtle.pendown()
+    turtle.goto(cx + CELL /2, cy - CELL //2) # draw to bottom right
+    turtle.penup()
+    turtle.goto(cx + CELL /2, cy + CELL //2) # go to bottom left of cell
+    turtle.pendown()
+    turtle.goto(cx - CELL /2, cy - CELL //2) # draw to top right
+
+
+
+def cell_center(row, col):
+    cx = -(SIZE //2 + CELL //2) + col * CELL
+    cy = (SIZE //2 + CELL //2) - row * CELL
+    print(f"cx = {cx} cy= {cy}")
+    return cx, cy
 
 # Fucntion draw a lin between points
 def draw_line (x1, y1, x2, y2):
@@ -17,32 +80,32 @@ def draw_board():
     turtle.hideturtle() # hide the turtle cursor
 
     #Vertical Lines
-    draw_line( -cell //2, half, -cell // 2, -half ) # left vertical
-    draw_line( cell //2, half, cell //2, -half) # right vertical
+    draw_line( -CELL //2, HALF, -CELL // 2, -HALF ) # left vertical
+    draw_line( CELL //2, HALF, CELL //2, -HALF) # right vertical
 
     #horizontal lines
-    draw_line (-half, cell //2 , half, cell //2 ) #top horizontal line
-    draw_line (-half, -cell //2 , half, -cell //2) #bottom horizontal line
+    draw_line (-HALF, CELL //2 , HALF, CELL //2 ) #top horizontal line
+    draw_line (-HALF, -CELL //2 , HALF, -CELL //2) #bottom horizontal line
 
 
+#function for handling mouse clicks, this is also effectively waiting until there's a click even then executing test functions
 def handle_click(x, y):
     # turn x, y click coordinates into row / col
-    if ( x < -cell //2):
+    if ( x < -CELL //2):
         col = 1
-    elif ( x > cell //2):
+    elif ( x > CELL //2):
         col = 3
     else:
         col = 2
-    if ( y > cell //2):
+    if ( y > CELL //2):
         row = 1
-    elif ( y < -cell //2):
+    elif ( y < -CELL //2):
         row = 3
     else:
         row = 2
-
     print(f"Row: ({row}, Column: {col})") # row / col registration test
-
-    
+    #draw_o(row, col)
+    draw_x(row,col)
 
 
 
@@ -54,6 +117,7 @@ def handle_click(x, y):
 
 def main ():
     draw_board()
+    show_message("Would you like to play a game?")
     turtle.onscreenclick(handle_click)
     turtle.mainloop()
 #    turtle.done() # keep the window open until you click - Commenting while I switch to mainloop

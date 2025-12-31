@@ -5,7 +5,15 @@
 Next immediate
 - game state management setup
     - Tracking where marks have been placed
-    - 
+- considering game phase and menu selection
+    - Debating if i want to get into that now
+
+Simple task
+- check for cell click location
+- setup 2D array of what is in each square
+- To add second - check if cell is occupied
+- Click in a square an X or 0 is Drawn, centered in that square
+
 
 
 
