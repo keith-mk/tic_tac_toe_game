@@ -1,6 +1,7 @@
 import turtle
+import game_state
 
-
+from config import SIZE, CELL, HALF, EMPTY, X, O
 
 
 
@@ -16,27 +17,10 @@ def show_message(msg):
     text_turtle.write(msg, align="center", font= ("Arial", 16, "bold"))
 
 
-# Board Management sections
 
-
-#definitions - Hard coded values
-SIZE = 300 #SIZE of the board
-CELL = SIZE //3 # SIZE of each CELL = 100
-HALF = SIZE //2 
-EMPTY = 0
-X = 1
-O = 2
-
-
-def create_board():
-    return [
-        [EMPTY, EMPTY, EMPTY],
-        [EMPTY, EMPTY, EMPTY],
-        [EMPTY, EMPTY, EMPTY],
-    ]
 
 #globals with initialization
-board = create_board()
+board = game_state.create_board()
 
 # function draws an o at the input row and column center
 def draw_o(row,col):
