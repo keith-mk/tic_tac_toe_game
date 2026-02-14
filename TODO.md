@@ -15,6 +15,9 @@ Simple task
 - Click in a square an X or 0 is Drawn, centered in that square
 
 
+ 
+
+
 
 
 Overall tasks 
@@ -44,4 +47,25 @@ Function break down
     Draw XO_input - use row/col as input
         Add error handling later
     
-        
+
+Project structure
+    User interface
+        Board
+            Draw Board
+            Draw X
+            Draw O
+            Draw Win
+        Message
+            Game Intro
+            Select X/O
+            It's X/O's Turn
+            Play Again
+            Bad Input
+        Menu
+            Yes / No
+            X / O
+    Game Controls
+        Input Board position
+        Win state
+    Detect Input (main?)
+    
